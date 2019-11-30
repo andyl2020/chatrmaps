@@ -1,21 +1,17 @@
 import { Component } from "react";
 import React from "react";
+import {Link} from "react-router-dom";
 
 class Event extends Component {
   state = {
     text: ""
   }
 
-  onChange(e) {
-    this.setState({ text: e.target.value });
-  }
-
-  onSubmit(e) {
-    e.preventDefault();
-    if(this.state.text) {
-      this.setState({ text: "" });
-      this.props.onSendMessage(this.state.text);
-    }
+  clickEvent() {
+    this.setState({
+      showEvent: !this.state.showEvent
+    })
+    console.log(this.state.showEvent)
   }
 
   render() {
@@ -25,16 +21,8 @@ class Event extends Component {
         <div>
           <h1>UBC Build Day</h1>
           <h3>Event</h3>
+          <Link to="/chat">Join Chat</Link>
         </div>
-        <form onSubmit = { e => this.onSubmit(e) }>
-          <input
-            onChange    = { e => this.onChange(e) }
-            value       = { this.state.text }
-            type        = "text"
-            placeholder = "Enter your message and press ENTER"
-          />
-          <button>Send</button>
-        </form>
       </div>
     );
   }
