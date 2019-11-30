@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-import Event from "./Event"
-
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+import Event from "./Event";
+import Marker from './small/marker';
 
 class Map extends Component {
   static defaultProps = {
     center: {
-      lat: 49.2606,
-      lng: -123.2460
+      lat: 49.2666,
+      lng: -123.2480
     },
-    zoom: 11
+    zoom: 16
   };
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -32,17 +31,17 @@ class Map extends Component {
     console.log(process.env.API_KEY);
     return (
       // Important! Always set the container height explicitly
-      <div style={{ height: '100vh', width: '100%' }}
-        onClick = { this.clickEvent }>
+      <div style={{ height: '100vh', width: '100%' }} >
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyD9L-pZrIUda4oTGDJ_RnbstCx0b8haZvA" }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          <AnyReactComponent
-            lat={49.2606}
-            lng={-123.2460}
+          <Marker
+            lat={49.2666}
+            lng={-123.2480}
             text="My Marker"
+            clickEvent = { this.clickEvent }
           />
         </GoogleMapReact>
         <div className = "Event">

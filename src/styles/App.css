@@ -97,3 +97,22 @@ button {
   border-radius: 8px;
   margin-left: 10px;
 }
+
+.markerHolder {
+  height: 40px;
+  width: 50px;
+  float: right;
+}
+
+.marker {
+  top: 10px;
+  font-size: 50px !important;
+  position: absolute;
+}
+
+.markerText {
+  top: 0;
+  right: 0;
+  position: absolute;
+  font-size: 20px;
+}
