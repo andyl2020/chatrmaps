@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom';
 import './styles/App.css';
 import { randomName, randomColor } from "./functions/demo";
 import Chat from './components/Chat';
@@ -35,11 +41,21 @@ class App extends Component {
 
   render() {
     return (
-      <div className = "App">
-        <Chat messages  = { this.state.messages }
-              member    = { this.state.member }
-              onSendMessage = { this.onSendMessage } />
-      </div>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+          // THIS IS WHERE MAP WILL GO
+          </Route>
+          <Route exact path="/chat"
+                 render = {() =>
+                  <Chat messages  = { this.state.messages }
+                        member    = { this.state.member }
+                        onSendMessage = { this.onSendMessage } />
+                 }
+          >
+          </Route>
+        </Switch>
+      </Router>
     );
   }
 

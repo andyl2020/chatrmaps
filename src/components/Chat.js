@@ -6,7 +6,7 @@ import '../styles/App.css';
 class Chat extends Component {
   render() {
     return(
-      <div>
+      <div className = "App">
         <div className = "App-header">
           <h1>Chatr 2.0</h1>
         </div>
