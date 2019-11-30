@@ -22,6 +22,10 @@ class Event extends Component {
     return (
       <div className = "Event"
         style = {this.props.show ? {display:"block"} : {display:"none"}}>
+        <div>
+          <h1>UBC Build Day</h1>
+          <h3>Event</h3>
+        </div>
         <form onSubmit = { e => this.onSubmit(e) }>
           <input
             onChange    = { e => this.onChange(e) }
