@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Typography from '@material-ui/core/Typography'
 
 export class ListOfUsers extends Component {
     state = {
@@ -11,7 +12,7 @@ export class ListOfUsers extends Component {
     }
     render() {
         return this.state.users.map((user) => (
-            <h1>{user.name}</h1>
+            <Typography>{user.name}</Typography>
         ));
     }
 }

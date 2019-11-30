@@ -47,11 +47,11 @@ class App extends Component {
           // THIS IS WHERE MAP WILL GO
           </Route>
           <Route exact path="/chat"
-                 render = {() =>
-                  <Chat messages  = { this.state.messages }
-                        member    = { this.state.member }
-                        onSendMessage = { this.onSendMessage } />
-                 }
+            render={() =>
+              <Chat messages={this.state.messages}
+                member={this.state.member}
+                onSendMessage={this.onSendMessage} />
+            }
           >
           </Route>
         </Switch>
