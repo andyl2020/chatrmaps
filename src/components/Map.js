@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import Event from "./Event";
 import Marker from './small/marker';
+import Add_Event from "./Add_Event";
 
 class Map extends Component {
   static defaultProps = {
@@ -48,6 +49,10 @@ class Map extends Component {
           <Event
             show = {this.state.showEvent}
           />
+        </div>
+        <div className = "Add_Event" 
+          style={"position:absolute","margin:0px;"}>
+          <Add_Event/>
         </div>
       </div>
     );

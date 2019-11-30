@@ -1,6 +1,5 @@
 import { Component } from "react";
 import React from "react";
-import {Link} from "react-router-dom";
 
 class Event extends Component {
   state = {
@@ -11,17 +10,15 @@ class Event extends Component {
     this.setState({
       showEvent: !this.state.showEvent
     });
-    console.log(this.state.showEvent)
+    console.log(this.state.showEvent);
   }
 
   render() {
     return (
-      <div className = "Event"
-        style = {this.props.show ? {display:"block"} : {display:"none"}}>
+      <div className = "Add_Event"
+        style = {{display: "block"}}>
         <div>
           <h1>UBC Build Day</h1>
-          <h3>Event: Hackathon group chat</h3>
-          <Link to="/chat">Join Chat</Link>
         </div>
       </div>
     );
