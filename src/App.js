@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './styles/App.css';
-import Messages from "./components/Messages";
-import Input from "./components/Input";
 import { randomName, randomColor } from "./functions/demo";
+import Chat from './components/Chat';
 
 class App extends Component {
   state = {
@@ -37,16 +36,9 @@ class App extends Component {
   render() {
     return (
       <div className = "App">
-        <div className = "App-header">
-          <h1>Chatr 2.0</h1>
-        </div>
-        <Messages
-          messages      = { this.state.messages }
-          currentMember = { this.state.member }
-        />
-        <Input
-          onSendMessage = { this.onSendMessage }
-        />
+        <Chat messages  = { this.state.messages }
+              member    = { this.state.member }
+              onSendMessage = { this.onSendMessage } />
       </div>
     );
   }
