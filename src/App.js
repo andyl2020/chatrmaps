@@ -9,6 +9,7 @@ import './styles/App.css';
 import { randomName, randomColor } from "./functions/demo";
 import Chat from './components/Chat';
 import Map from './components/Map';
+import ListOfUsers from './components/ListOfUsers';
 
 class App extends Component {
   state = {
@@ -34,7 +35,7 @@ class App extends Component {
       this.setState({ member });
     });
 
-    
+
     const room = this.drone.subscribe("observable-room");
     // console.log(room);
 
@@ -63,7 +64,7 @@ class App extends Component {
       this.setState({ members });
     });
 
-    
+
   }
 
   render() {
@@ -71,10 +72,10 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path="/"
-                 render = {() =>
-                  <Map messages  = { this.state.messages }
-                        member    = { this.state.member } />
-                 }
+            render={() =>
+              <Map messages={this.state.messages}
+                member={this.state.member} />
+            }
           >
           </Route>
           <Route exact path="/chat"
@@ -82,6 +83,12 @@ class App extends Component {
               <Chat messages={this.state.messages}
                 member={this.state.member}
                 onSendMessage={this.onSendMessage} />
+            }
+          >
+          </Route>
+          <Route exact path="/users"
+            render={() =>
+              <ListOfUsers />
             }
           >
           </Route>
