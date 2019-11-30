@@ -5,16 +5,16 @@ import { ListItemText } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid'
 
 export class ListOfUsers extends Component {
-    // state = {
-    //     users: [
-    //         { name: 'derek' },
-    //         { name: 'josh' },
-    //         { name: 'andy' },
-    //         { name: 'clarence' },
-    //         { name: 'matthew' }
-    //     ]
-    // }
-    users = this.props.users.map((user) => (
+    state = {
+        users: [
+            { name: 'derek' },
+            { name: 'josh' },
+            { name: 'andy' },
+            { name: 'clarence' },
+            { name: 'matthew' }
+        ]
+    }
+    users = this.state.users.map((user) => (
         <Grid container>
             <Grid item xs={11}>
                 <ListItem>
@@ -31,7 +31,7 @@ export class ListOfUsers extends Component {
 
     render() {
         return (
-            <div>
+            <div >
                 <List >
                     {this.users}
                 </List>
