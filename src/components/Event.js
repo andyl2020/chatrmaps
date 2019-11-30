@@ -20,7 +20,7 @@ class Event extends Component {
         style = {this.props.show ? {display:"block"} : {display:"none"}}>
         <div>
           <h1>UBC Build Day</h1>
-          <h3>Event</h3>
+          <h3>Event: Hackathon group chat</h3>
           <Link to="/chat">Join Chat</Link>
         </div>
       </div>

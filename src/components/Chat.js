@@ -27,6 +27,6 @@ class Chat extends Component {
 const linkStyle = {
   color: "#fff",
   textDecoration: 'none'
-}
+};
 
 export default Chat;
