@@ -10,8 +10,8 @@ export class ListOfUsers extends Component {
             { name: 'derek' },
             { name: 'josh' },
             { name: 'andy' },
-            { name: 'clarence' }
-            { name: 'matthrew' }
+            { name: 'clarence' },
+            { name: 'matthew' }
         ]
     }
     users = this.state.users.map((user) => (
