@@ -8,6 +8,7 @@ import {
 import './styles/App.css';
 import { randomName, randomColor } from "./functions/demo";
 import Chat from './components/Chat';
+import Map from './components/Map';
 
 class App extends Component {
   state = {
@@ -69,15 +70,19 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/">
-          // THIS IS WHERE MAP WILL GO
+          <Route exact path="/"
+                 render = {() =>
+                  <Map messages  = { this.state.messages }
+                        member    = { this.state.member } />
+                 }
+          >
           </Route>
           <Route exact path="/chat"
-                 render = {() =>
-                  <Chat messages  = { this.state.messages }
-                        member    = { this.state.member }
-                        onSendMessage = { this.onSendMessage } />
-                 }
+            render={() =>
+              <Chat messages={this.state.messages}
+                member={this.state.member}
+                onSendMessage={this.onSendMessage} />
+            }
           >
           </Route>
         </Switch>
