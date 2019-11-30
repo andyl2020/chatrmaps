@@ -7,13 +7,6 @@ class Event extends Component {
     text: ""
   }
 
-  clickEvent() {
-    this.setState({
-      showEvent: !this.state.showEvent
-    });
-    console.log(this.state.showEvent)
-  }
-
   render() {
     return (
       <div className = "Event"

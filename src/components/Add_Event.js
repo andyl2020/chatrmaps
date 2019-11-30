@@ -1,28 +1,26 @@
 import { Component } from "react";
 import React from "react";
+import '../styles/App.css';
 
-class Event extends Component {
+class Add_Event extends Component {
   state = {
     text: ""
-  }
-
-  clickEvent() {
-    this.setState({
-      showEvent: !this.state.showEvent
-    });
-    console.log(this.state.showEvent);
   }
 
   render() {
     return (
       <div className = "Add_Event"
-        style = {{display: "block"}}>
-        <div>
-          <h1>UBC Build Day</h1>
-        </div>
+        style = {buttonStyle}>
+        <button type="button">Add Event</button> 
       </div>
     );
   }
 }
 
-export default Event;
+const buttonStyle = {
+  position: "absolute",
+  top: "10px",
+  left: "10px"
+};
+
+export default Add_Event;

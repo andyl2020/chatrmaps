@@ -16,7 +16,8 @@ class Map extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showEvent: false
+      showEvent: false,
+      showAdd_Event: false
     }
     this.clickEvent = this.clickEvent.bind(this)
   }
@@ -26,6 +27,13 @@ class Map extends Component {
       showEvent: !this.state.showEvent
     })
     console.log(this.state.showEvent)
+  }
+
+  clickAdd_Event() {
+    this.setState({
+      showEvent: !this.state.showAdd_Event
+    })
+    console.log(this.state.showAdd_Event)
   }
 
   render() {
@@ -50,9 +58,9 @@ class Map extends Component {
             show = {this.state.showEvent}
           />
         </div>
-        <div className = "Add_Event" 
-          style={"position:absolute","margin:0px;"}>
-          <Add_Event/>
+        <div className = "Add_Event" >
+          <Add_Event
+            show = {this.state.showAdd_Event}/>
         </div>
       </div>
     );
