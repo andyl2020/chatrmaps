@@ -12,7 +12,7 @@ class Header extends Component {
             <Menu />
           </IconButton>
           <Typography variant="h6">
-            Chatrr 2.0
+            ChatrMaps
           </Typography>
         </Toolbar>
       </AppBar>
