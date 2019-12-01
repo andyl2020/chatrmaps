@@ -4,12 +4,14 @@ import Event from "./Event";
 import EventTop from "./EventTop";
 import Marker from './small/marker';
 import Header from './template/header';
+import Add_Event from "./Add_Event";
 
 class Map extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showEvent: false,
+      showAdd_Event: false
       center: {
         lat: 49.2666,
         lng: -123.2480
@@ -54,6 +56,13 @@ class Map extends Component {
     this.google.panTo(this.state.center);
   }
 
+  clickAdd_Event() {
+    this.setState({
+      showEvent: !this.state.showAdd_Event
+    })
+    console.log(this.state.showAdd_Event)
+  }
+
   render() {
     const defaultCenter = {
       lat: 0,
@@ -80,6 +89,7 @@ class Map extends Component {
         </GoogleMapReact>
         <EventTop show = {this.state.showEvent} />
         <Event show = {this.state.showEvent} />
+        <Add_Event show = {this.state.showAdd_Event}/>
       </div>
     );
   }
