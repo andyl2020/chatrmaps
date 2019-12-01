@@ -196,17 +196,81 @@ button {
   padding-top: 30px;
 }
 
-.about {
-    float: left;
-    margin-top: 8px;
-    padding-left: 8px;
+
+
+
+
+.member-list-div {
+  background-color: white;
+  position: absolute;
+  width: 80vw;
+  height: 80vh;
+  max-height: 80vh;
+  max-width: 500px;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  transition: all 0.5s;
+}
+.member-list-div_active {
+  background-color: white;
+  position: absolute;
+  width: 80vw;
+  height: 80vh;
+  max-height: 80vh;
+  max-width: 500px;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  transform: translate(-50%, -50%);
+  overflow: auto;
+  transition: all 0.5s;
+}
+.chat-member {
+  list-style-type: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.chat-member img {
+  max-height: 50px;
+  max-width: 50px;
+  float: left;
+  margin-right: 20px;
+}
+.member-desc-holder {
+  display: flex;
+  float: left;
+  flex-direction: column;
+  justify-content: center;
+}
+.member-name {
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
-.clearfix:after {
-  visibility: hidden;
-  display: block;
-  font-size: 0;
-  content: " ";
-  clear: both;
-  height: 0;
+.member-online {
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.member-message {
+  float: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cross {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.trigger {
+  cursor: pointer;
 }

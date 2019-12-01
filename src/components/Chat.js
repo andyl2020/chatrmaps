@@ -3,8 +3,22 @@ import Messages from "./Messages";
 import Input from "./Input";
 import '../styles/App.css';
 import { Link } from 'react-router-dom';
+import UserList from './userList';
 
 class Chat extends Component {
+  constructor() {
+    super();
+    this.state = {
+      showMembers: false
+    };
+    this.triggerMembers = this.triggerMembers.bind(this);
+  }
+
+  triggerMembers() {
+    this.setState(prevState => ({
+      showMembers: !prevState.showMembers
+    }));
+  }
   render() {
     return (
       <div className="App">
@@ -13,7 +27,7 @@ class Chat extends Component {
           <p>
             <Link style={linkStyle} to="/">Home</Link>
             &nbsp; &nbsp; | &nbsp; &nbsp;
-            <Link style={linkStyle} to="/users">Users</Link>
+            <span class="trigger" onClick={this.triggerMembers} style={linkStyle}>Users</span>
           </p>
 
         </div>
@@ -24,6 +38,9 @@ class Chat extends Component {
         <Input
           onSendMessage={this.props.onSendMessage}
         />
+        <UserList members={this.props.members}
+                  show={this.state.showMembers}
+                  trigger={this.triggerMembers}/>
       </div>
     );
   }

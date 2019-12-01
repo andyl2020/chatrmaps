@@ -85,6 +85,7 @@ class App extends Component {
             render={() =>
               <Chat messages={this.state.messages}
                 member={this.state.member}
+                members={this.state.members}
                 onSendMessage={this.onSendMessage} />
             }
           >
