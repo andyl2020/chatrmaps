@@ -7,20 +7,10 @@ class Event extends Component {
     text: ""
   }
 
-  clickEvent() {
-    this.setState({
-      showEvent: !this.state.showEvent
-    })
-    console.log(this.state.showEvent)
-  }
-
   render() {
     return (
-      <div className = "Event"
-        style = {this.props.show ? {display:"block"} : {display:"none"}}>
+      <div className = {this.props.show ? "event_active" : "event"}>
         <div>
-          <h1>UBC Build Day</h1>
-          <h3>Event: Hackathon group chat</h3>
           <Link to="/chat">Join Chat</Link>
         </div>
       </div>

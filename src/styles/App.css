@@ -116,3 +116,58 @@ button {
   position: absolute;
   font-size: 20px;
 }
+
+.event {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  min-height: 10vh;
+  background-color: white;
+  text-align: center;
+  transform: translateY(100%);
+  transition: all 0.4s;
+}
+
+.event_active {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  min-height: 10vh;
+  background-color: white;
+  text-align: center;
+  transform: translateY(0%);
+  transition: all 0.2s;
+}
+
+.event--top {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  min-height: 10vh;
+  background-color: white;
+  text-align: center;
+  transform: translateY(-100%);
+  transition: all 0.4s;
+  z-index: 1101;
+}
+
+.event--top_active {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  min-height: 10vh;
+  background-color: white;
+  text-align: center;
+  transform: translateY(0%);
+  transition: all 0.2s;
+  z-index: 1101;
+}
+
+.header {
+  transform: translateY(-100%);
+  transition: all 0.2s;
+}
+.header_active {
+  transform: translateY(0%);
+  transition: all 0.2s;
+}
