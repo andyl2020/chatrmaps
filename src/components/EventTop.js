@@ -10,7 +10,7 @@ class EventTop extends Component {
     return (
       <div className = {this.props.show ? "event--top_active" : "event--top"}>
         <div>
-          <h1>UBC Build Day</h1>
+          <h1><strong>UBC Build Day</strong></h1>
           <h3>Event: Hackathon group chat</h3>
         </div>
       </div>

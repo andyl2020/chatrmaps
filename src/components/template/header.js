@@ -18,7 +18,7 @@ class Header extends Component {
   }
   render() {
     return(
-      <AppBar position="static" >
+      <AppBar position="static" style={{backgroundColor: "#262626"}} >
         <Toolbar>
           <Typography variant="h6">
             ChatrMaps
