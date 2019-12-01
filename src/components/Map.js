@@ -11,7 +11,7 @@ class Map extends Component {
     super(props);
     this.state = {
       showEvent: false,
-      showAdd_Event: false
+      showAdd_Event: false,
       center: {
         lat: 49.2666,
         lng: -123.2480
