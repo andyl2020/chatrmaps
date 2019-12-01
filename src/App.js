@@ -10,6 +10,7 @@ import { randomName, randomColor } from "./functions/demo";
 import Chat from './components/Chat';
 import Map from './components/Map';
 import ListOfUsers from './components/ListOfUsers';
+import UserList from './components/userList';
 
 class App extends Component {
   state = {
@@ -90,7 +91,7 @@ class App extends Component {
           </Route>
           <Route exact path="/users"
             render={() =>
-              <ListOfUsers members={this.state.members}/>
+              <UserList members={this.state.members}/>
             }
           >
           </Route>

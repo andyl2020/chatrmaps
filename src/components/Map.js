@@ -50,7 +50,9 @@ class Map extends Component {
         lat: latt,
         lng: lngg
       }
-    }), () => { this.google.panTo(this.state.center); });
+    }), () => {
+      this.google.panTo(this.state.center);
+    });
     console.log("show Event Clicked!", this.state.center);
   }
 
