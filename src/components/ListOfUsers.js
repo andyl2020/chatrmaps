@@ -43,11 +43,11 @@ export class ListOfUsers extends Component {
             <React.Fragment>
                 <Paper>
                     <Grid container>
-                        <Grid item xs={10}>
+                        <Grid item xs={12}>
                             <Typography component="h1" variant="h4" align="center">Users in this chat</Typography>
                         </Grid>
-                        <Grid item xs={2}>
-                            <Typography component="h1" variant="h4"># of users: {this.props.members.length}</Typography>
+                        <Grid item xs={8}>
+                            <Typography component="h4" variant="h6"># of users: {this.props.members.length}</Typography>
                         </Grid>
                     </Grid>
                 </Paper>
