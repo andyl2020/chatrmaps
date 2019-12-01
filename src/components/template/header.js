@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
-import { AppBar, Toolbar, IconButton, Typography, Button } from '@material-ui/core';
-import { Menu } from '@material-ui/icons';
+import { AppBar, Toolbar, IconButton, Typography, Button, MenuItem } from '@material-ui/core';
+import { Menu, AccountCircle } from '@material-ui/icons';
 
 
 class Header extends Component {
+  constructor() {
+    super();
+    this.state = {
+      open: false
+    };
+  }
+
+  handleClose() {
+    this.setState({
+      open: !this.state.open
+    });
+  }
   render() {
     return(
-      <AppBar position="static" >
+      <AppBar position="static" style={{backgroundColor: "#262626"}} >
         <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="menu">
-            <Menu />
-          </IconButton>
           <Typography variant="h6">
-            Chatrr 2.0
+            ChatrMaps
           </Typography>
         </Toolbar>
       </AppBar>

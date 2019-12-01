@@ -14,9 +14,10 @@
 }
 
 .Messages-list {
-  padding: 20px 0;
-  max-width: 900px;
+  margin: 30px 0;
   width: 100%;
+  max-width: 90vw;
+  align-self: center;
   margin: 0 auto;
   list-style: none;
   padding-left: 0;
@@ -99,14 +100,14 @@ button {
 }
 
 .markerHolder {
-  height: 40px;
-  width: 50px;
+  height: 50px;
+  width: 60px;
   float: right;
 }
 
 .marker {
   top: 10px;
-  font-size: 50px !important;
+  font-size: 60px !important;
   position: absolute;
 }
 
@@ -121,22 +122,34 @@ button {
   position: absolute;
   bottom: 0;
   width: 100%;
-  min-height: 10vh;
-  background-color: white;
+  min-height: 15vh;
+  background-color: #262626;
   text-align: center;
   transform: translateY(100%);
   transition: all 0.4s;
+  color: white;
+}
+.event svg {
+  padding: 10px;
+  fill: white;
+  font-size: 50px !important;
 }
 
 .event_active {
   position: absolute;
   bottom: 0;
   width: 100%;
-  min-height: 10vh;
-  background-color: white;
+  min-height: 15vh;
+  background-color: #262626;
   text-align: center;
   transform: translateY(0%);
   transition: all 0.2s;
+  color: white;
+}
+.event_active svg {
+  padding: 10px;
+  fill: white;
+  font-size: 50px !important;
 }
 
 .event--top {
@@ -144,11 +157,12 @@ button {
   top: 0;
   width: 100%;
   min-height: 10vh;
-  background-color: white;
+  background-color: #262626;
   text-align: center;
   transform: translateY(-100%);
   transition: all 0.4s;
   z-index: 1101;
+  color: white;
 }
 
 .event--top_active {
@@ -156,11 +170,12 @@ button {
   top: 0;
   width: 100%;
   min-height: 10vh;
-  background-color: white;
+  background-color: #262626;
   text-align: center;
   transform: translateY(0%);
   transition: all 0.2s;
   z-index: 1101;
+  color: white;
 }
 
 .header {
@@ -170,4 +185,13 @@ button {
 .header_active {
   transform: translateY(0%);
   transition: all 0.2s;
+}
+
+.Input, .Messages-list {
+  max-width: 90vw;
+  align-self: center;
+  width: 100%;
+}
+.Input {
+  padding-top: 30px;
 }

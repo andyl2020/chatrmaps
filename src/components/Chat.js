@@ -9,11 +9,12 @@ class Chat extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h1>Chatr 2.0</h1>
-          <Link style={linkStyle} to="/">Home</Link>
-          <div>
+          <h1>ChatrMaps</h1>
+          <p>
+            <Link style={linkStyle} to="/">Home</Link>
+            &nbsp; &nbsp; | &nbsp; &nbsp;
             <Link style={linkStyle} to="/users">Users</Link>
-          </div>
+          </p>
 
         </div>
         <Messages
