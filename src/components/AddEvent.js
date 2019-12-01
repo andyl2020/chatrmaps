@@ -1,6 +1,5 @@
 import { Component } from "react";
 import React from "react";
-import '../styles/App.css';
 
 class AddEvent extends Component {
   state = {
