@@ -40,6 +40,7 @@ class App extends Component {
       const messages = this.state.messages;
       messages.push({ member, text: data });
       this.setState({ messages });
+
     });
     room.on('members', (members) => {
       const member_list = [];
@@ -103,6 +104,8 @@ class App extends Component {
       room: "observable-room",
       message
     });
+    const ml = document.getElementById('messageList');
+    ml.scrollTop = ml.scrollHeight;
   }
 
 }

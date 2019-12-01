@@ -5,7 +5,7 @@ class Messages extends Component {
   render() {
     const { messages } = this.props;
     return (
-      <ul className="Messages-list">
+      <ul className="Messages-list" id="messageList">
         { messages.map((m, i) => this.renderMessage(m, i)) }
       </ul>
     );
@@ -33,7 +33,7 @@ class Messages extends Component {
       if(member.clientData!=null)
         username = member.clientData.username;
        else
-        username = randomName(); 
+        username = randomName();
     }
 
     const className = messageFromMe ?
@@ -49,7 +49,7 @@ class Messages extends Component {
       bgc = randomColor();
     }
 
-    
+
     return (
       <li key       = { index }
           className = { className }>
