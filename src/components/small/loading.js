@@ -24,7 +24,6 @@ class Loading extends Component {
       alignItems: "center",
       justifyContent: "center"
     };
-    console.log(this.props.show);
     return(
       <div style={ this.props.show ? bstyle : nostyle } >
         <CircularProgress style={{zIndex: "1", position: "absolute"}}/>

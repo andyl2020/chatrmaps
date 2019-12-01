@@ -74,7 +74,8 @@ class App extends Component {
           <Route exact path="/"
             render={() =>
               <Map messages={this.state.messages}
-                member={this.state.member} />
+                   member={this.state.member}
+                   numMembers={this.state.members.length}/>
             }
           >
           </Route>

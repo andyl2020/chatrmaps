@@ -25,12 +25,6 @@ class Map extends Component {
   }
 
   handleApiLoaded(map, maps) {
-    console.log(map);
-    console.log(maps);
-    const newCenter = {
-      lat: 0,
-      lng: 0
-    };
     this.google = map;
     navigator.geolocation.getCurrentPosition(
       pos => {
@@ -56,16 +50,14 @@ class Map extends Component {
         lat: latt,
         lng: lngg
       }
-    }));
-    console.log("show Event Clicked!", this.state.showEvent);
-    this.google.panTo(this.state.center);
+    }), () => { this.google.panTo(this.state.center); });
+    console.log("show Event Clicked!", this.state.center);
   }
 
   clickAdd_Event() {
     this.setState({
       showEvent: !this.state.showAdd_Event
-    })
-    console.log(this.state.showAdd_Event)
+    });
   }
 
   render() {
@@ -92,6 +84,7 @@ class Map extends Component {
             lng={-123.2480}
             text="My Marker"
             clickEvent = { this.clickEvent }
+            num = {this.props.numMembers}
           />
         </GoogleMapReact>
         <EventTop show = {this.state.showEvent} />
