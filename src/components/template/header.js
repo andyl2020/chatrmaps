@@ -21,7 +21,7 @@ class Header extends Component {
       <AppBar position="static" >
         <Toolbar>
           <Typography variant="h6">
-            Chatrr 2.0
+            ChatrMaps
           </Typography>
         </Toolbar>
       </AppBar>
