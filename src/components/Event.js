@@ -1,6 +1,9 @@
 import { Component } from "react";
 import React from "react";
 import {Link} from "react-router-dom";
+import {Chat, Info} from '@material-ui/icons';
+
+
 
 class Event extends Component {
   state = {
@@ -10,9 +13,10 @@ class Event extends Component {
   render() {
     return (
       <div className = {this.props.show ? "event_active" : "event"}>
-        <div>
-          <Link to="/chat">Join Chat</Link>
-        </div>
+        <Link to="/chat">
+          <Chat />
+        </Link>
+        <Info />
       </div>
     );
   }

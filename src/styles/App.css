@@ -121,22 +121,32 @@ button {
   position: absolute;
   bottom: 0;
   width: 100%;
-  min-height: 10vh;
+  min-height: 15vh;
   background-color: white;
   text-align: center;
   transform: translateY(100%);
   transition: all 0.4s;
+}
+.event svg {
+  padding: 10px;
+  fill: black;
+  font-size: 50px !important;
 }
 
 .event_active {
   position: absolute;
   bottom: 0;
   width: 100%;
-  min-height: 10vh;
+  min-height: 15vh;
   background-color: white;
   text-align: center;
   transform: translateY(0%);
   transition: all 0.2s;
+}
+.event_active svg {
+  padding: 10px;
+  fill: black;
+  font-size: 50px !important;
 }
 
 .event--top {
