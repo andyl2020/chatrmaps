@@ -26,11 +26,14 @@ class Messages extends Component {
       messageFromMe = false;
     }
 
-    if(member.clientData==null){
+    if(member==null){
       username = randomName();
     }
     else{
-      username = member.clientData.username;
+      if(member.clientData!=null)
+        username = member.clientData.username;
+       else
+        username = randomName(); 
     }
 
     const className = messageFromMe ?
