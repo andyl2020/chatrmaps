@@ -35,33 +35,33 @@ class App extends Component {
       this.setState({ member });
     });
 
-
     const room = this.drone.subscribe("observable-room");
-    // console.log(room);
-
     room.on('data', (data, member) => {
       const messages = this.state.messages;
       messages.push({ member, text: data });
       this.setState({ messages });
-      console.log(member);
-      console.log("hi");
-      console.log(this.state.members)
-
     });
-
-
-    // room.on('members', function(members) {
-    //   // List of members as an array
-    //   console.log(members);
-    // });
-
-    // const room2 = this.drone.subscribe("observable-room");
     room.on('members', (members) => {
-      // List of members as an array
-      console.log(members);
-      console.log("hi2");
-      // var membersList = [...this.state.members].push(mem)
-      this.setState({ members });
+      const member_list = [];
+      for(var member in members){
+        if(member.clientData){
+            if (member.clientData.username){
+              member_list.push(member.clientData.username);
+            }
+        }
+      }
+      console.log(member_list);
+      this.setState({members: member_list});
+    });
+    room.on('member_join', (member) => {
+      const member_list = this.state.members;
+      if (member.clientData){
+        if (member.clientData.username){
+          member_list.push(member.clientData.username);
+        }
+      }
+      console.log(member_list);
+      this.setState({members: member_list});
     });
 
 
@@ -88,7 +88,7 @@ class App extends Component {
           </Route>
           <Route exact path="/users"
             render={() =>
-              <ListOfUsers />
+              <ListOfUsers members={this.state.members}/>
             }
           >
           </Route>

@@ -1,6 +1,6 @@
 import { Component } from "react";
 import React from "react";
-
+import {randomColor,randomName} from "../functions/demo";
 class Messages extends Component {
   render() {
     const { messages } = this.props;
@@ -10,30 +10,53 @@ class Messages extends Component {
       </ul>
     );
   }
-
   generateKey(pre) {
     return new Date().getTime();
   }
-
   renderMessage(message, index) {
     const { member, text } = message;
     const { currentMember } = this.props;
-    const messageFromMe = member.id === currentMember.id;
+    var messageFromMe;
+    var username;
+    if(member!=null&&currentMember!=null)
+    {
+      messageFromMe = member.id === currentMember.id;
+    }
+    else{
+      messageFromMe = false;
+    }
+
+    if(member.clientData==null){
+      username = randomName();
+    }
+    else{
+      username = member.clientData.username;
+    }
+
     const className = messageFromMe ?
       "Messages-message currentMember" : "Messages-message";
+    if (member.clientData){
+      if(member.clientData.color){
+        var bgc = member.clientData.color;
+      }
+    }
+    else{
+      bgc = randomColor();
+    }
+
+    
     return (
       <li key       = { index }
           className = { className }>
         <span className = "avatar"
-              style     = {{ backgroundColor: member.clientData.color }}
+              style     = {{ backgroundColor: bgc }}
         />
         <div className = "Message-content">
-          <div className = "username">{ member.clientData.username }</div>
+          <div className = "username">{ username }</div>
           <div className = "text">{ text }</div>
         </div>
       </li>
     );
   }
 }
-
 export default Messages;
