@@ -6,6 +6,8 @@ import Marker from './small/marker';
 import Header from './template/header';
 import AddEvent from "./AddEvent";
 
+import Loading from './small/loading';
+
 class Map extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +18,8 @@ class Map extends Component {
         lat: 49.2666,
         lng: -123.2480
       },
-      zoom: 16
+      zoom: 16,
+      loaded: false
     };
     this.clickEvent = this.clickEvent.bind(this);
   }
@@ -29,14 +32,16 @@ class Map extends Component {
       lng: 0
     };
     this.google = map;
-    const currentPos = navigator.geolocation.getCurrentPosition(
+    navigator.geolocation.getCurrentPosition(
       pos => {
           const coords = pos.coords;
           this.setState( prevState => ({
+            ...prevState,
             center: {
               lat: coords.latitude,
-              lng: coords.longitude
-            }
+              lng: coords.longitude,
+            },
+            loaded: true
           }), () => { this.google.panTo(this.state.center); });
         }
     );
@@ -69,9 +74,11 @@ class Map extends Component {
       lng: 0
     };
     const defaultZoom = 16;
+
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: '90vh', width: '100%' }} >
+        <Loading show = { !this.state.loaded } />
         <Header show = {!this.state.showEvent}/>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyD9L-pZrIUda4oTGDJ_RnbstCx0b8haZvA" }}
