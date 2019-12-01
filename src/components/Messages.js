@@ -38,9 +38,11 @@ class Messages extends Component {
 
     const className = messageFromMe ?
       "Messages-message currentMember" : "Messages-message";
-    if (member.clientData){
-      if(member.clientData.color){
-        var bgc = member.clientData.color;
+    if(member){
+      if (member.clientData){
+        if(member.clientData.color){
+          var bgc = member.clientData.color;
+        }
       }
     }
     else{
