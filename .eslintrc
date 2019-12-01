@@ -9,7 +9,7 @@
   },
   "rules": {
     "semi": "error",
-    "comma-dangle": "off",
+    "comma-dangle": "off", 
     "no-console": "off",
     "keyword-spacing": "warn",
     "max-len": "warn",
