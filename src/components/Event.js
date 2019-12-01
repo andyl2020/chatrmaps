@@ -10,7 +10,7 @@ class Event extends Component {
   render() {
     return (
       <div className = "Event"
-        style = {this.props.show ? {display:"block"} : {display:"none"}}>
+        style = {this.props.show ? {display: "block"} : {display: "none"}}>
         <div>
           <h1>UBC Build Day</h1>
           <h3>Event: Hackathon group chat</h3>

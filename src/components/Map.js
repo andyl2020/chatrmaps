@@ -59,7 +59,7 @@ class Map extends Component {
           />
         </div>
         <div className = "Add_Event" >
-          <Add_Event
+          <Add_Event/>
             show = {this.state.showAdd_Event}/>
         </div>
       </div>
