@@ -4,14 +4,14 @@ import Event from "./Event";
 import EventTop from "./EventTop";
 import Marker from './small/marker';
 import Header from './template/header';
-import Add_Event from "./Add_Event";
+import AddEvent from "./AddEvent";
 
 class Map extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showEvent: false,
-      showAdd_Event: false,
+      showAdd_Event: true,
       center: {
         lat: 49.2666,
         lng: -123.2480
@@ -89,7 +89,7 @@ class Map extends Component {
         </GoogleMapReact>
         <EventTop show = {this.state.showEvent} />
         <Event show = {this.state.showEvent} />
-        <Add_Event show = {this.state.showAdd_Event}/>
+        <AddEvent show = {this.state.showAdd_Event}/>
       </div>
     );
   }

@@ -2,16 +2,16 @@ import { Component } from "react";
 import React from "react";
 import '../styles/App.css';
 
-class Add_Event extends Component {
+class AddEvent extends Component {
   state = {
     text: ""
   }
 
   render() {
     return (
-      <div className = "Add_Event"
+      <div className = "add-event"
         style = {buttonStyle}>
-        <button type="button">Add Event</button> 
+        <button type="button">Add Event</button>
       </div>
     );
   }
@@ -19,8 +19,8 @@ class Add_Event extends Component {
 
 const buttonStyle = {
   position: "absolute",
-  top: "10px",
+  top: "100px",
   left: "10px"
 };
 
-export default Add_Event;
+export default AddEvent;
