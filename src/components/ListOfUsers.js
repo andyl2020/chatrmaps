@@ -14,13 +14,14 @@ export class ListOfUsers extends Component {
             { name: 'andy' },
             { name: 'clarence' },
             { name: 'matthew' }
-        ]
+        ],
+        users2: ['HELLO', 'HI', 'GOODBYE']
     }
-    users = this.state.users.map((user) => (
+    users = this.state.users2.map((user) => (
         <Grid container>
             <Grid item xs={11}>
                 <ListItem>
-                    <ListItemText>{user.name}</ListItemText>
+                    <ListItemText>{user}</ListItemText>
                 </ListItem>
             </Grid>
             <Grid item xs={1}>
