@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { randomColor, randomName } from "../functions/demo";
+import { randomColor, randomName } from "../../functions/demo";
 
 class Messages extends Component {
 
@@ -30,9 +30,6 @@ class Messages extends Component {
       }
     }
 
-    const className = messageFromMe ?
-      "Messages-message currentMember" : "Messages-message";
-
     if (member) {
       if (member.clientData) {
         if (member.clientData.color) {
@@ -45,11 +42,11 @@ class Messages extends Component {
 
     return (
       <li key       = { index }
-          className = { className }>
+          className = { messageFromMe ? "chat__list currentMember" : "chat__list" }>
         <span className = "avatar"
               style     = {{ backgroundColor: this.bgc }}
         />
-        <div className = "Message-content">
+        <div className = "chat__list__content">
           <div className = "username">{ username }</div>
           <div className = "text">{ text }</div>
         </div>
@@ -60,7 +57,7 @@ class Messages extends Component {
   render() {
     const { messages } = this.props;
     return(
-      <ul className="messages-list" id="messageList">
+      <ul className="chat-list-holder" id="messageList">
         { messages.map((m,i) => this.renderMessage(m,i))}
       </ul>
     );

@@ -1,0 +1,64 @@
+.user-list {
+  background-color: white;
+  position: absolute;
+  width: 80vw;
+  height: 80vh;
+  max-height: 80vh;
+  max-width: 500px;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  transition: all 0.5s;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  border-style: solid;
+  border-color: $black;
+
+  h1 {
+    text-align: center;
+  }
+}
+.user-list--active {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.user-list__user {
+  list-style-type: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  img {
+    max-height: 50px;
+    max-width: 50px;
+    float: left;
+    margin-right: 20px;
+  }
+}
+.user-list__user__desc {
+  display: flex;
+  float: left;
+  flex-direction: column;
+  justify-content: center;
+
+  .user-list__user__desc__name {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  .user-list__user__desc__online {
+    margin-top: 5px;
+    margin-bottom: 0;
+  }
+}
+
+.user-list__message {
+  float: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

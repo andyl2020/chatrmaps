@@ -5,12 +5,13 @@ import {
   Route
 } from 'react-router-dom';
 
-import './styles/App.css';
+import './styles/App.scss';
 import { randomName, randomColor } from "./functions/demo";
 
-import Chat from './components/Chat';
+import Chat from './components/Chatroom';
 import Map from './components/Map';
-import UserList from './components/userList';
+
+import * as ROUTES from './constants/routes';
 
 
 // Firebase App (the core Firebase SDK) is always required and
@@ -72,7 +73,7 @@ class App extends Component {
           member_list.push(member.clientData.username);
         }
       }
-      console.log("New member! List:", member_list);
+      // console.log("New member! List:", member_list);
       this.setState({members: member_list});
     });
 
@@ -81,7 +82,7 @@ class App extends Component {
       if (member.clientData && member.clientData.username) {
         member_list.push(member.clientData.username);
       }
-      console.log("New member! List:", member_list);
+      // console.log("New member! List:", member_list);
       this.setState({members: member_list});
     });
   }
@@ -91,7 +92,7 @@ class App extends Component {
       <Router>
         <Switch>
 
-          <Route exact path="/"
+          <Route exact path={ROUTES.HOME}
             render = {() =>
               <Map messages   = {this.state.messages}
                    member     = {this.state.member}
@@ -99,18 +100,12 @@ class App extends Component {
           >
           </Route>
 
-          <Route exact path="/chat"
+          <Route exact path={ROUTES.CHAT}
             render = {() =>
               <Chat messages      = {this.state.messages}
                     member        = {this.state.member}
                     members       = {this.state.members}
                     onSendMessage = {this.onSendMessage} /> }
-          >
-          </Route>
-
-          <Route exact path="/users"
-            render = {() =>
-              <UserList members = {this.state.members}/> }
           >
           </Route>
 

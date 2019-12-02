@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import Messages from "./Messages";
-import Input from "./Input";
+import Messages from "./messageBox";
+import Input from "./input";
 import { Link } from 'react-router-dom';
 import UserList from './userList';
+
+import * as ROUTES from '../../constants/routes';
 
 class Chat extends Component {
   constructor() {
@@ -26,14 +28,13 @@ class Chat extends Component {
         <div className="chat__header">
           <h1>ChatrMaps</h1>
           <p>
-            <Link style = {linkStyle}
-                  to    = "/"
+            <Link className = "b--chatroom"
+                  to        = {ROUTES.HOME}
             >Home</Link>
 
             &nbsp; &nbsp; | &nbsp; &nbsp;
-            <span className = "trigger"
+            <span className = "b--chatroom"
                   onClick   = {this.triggerMembers}
-                  style     = {linkStyle}
             >Users</span>
           </p>
 
@@ -50,10 +51,5 @@ class Chat extends Component {
     );
   }
 }
-
-const linkStyle = {
-  color: "#fff",
-  textDecoration: 'none'
-};
 
 export default Chat;

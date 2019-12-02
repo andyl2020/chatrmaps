@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-import Event from "./Event";
-import EventTop from "./EventTop";
-import Marker from './small/marker';
-import Header from './template/header';
-import AddEvent from "./AddEvent";
 
-import Loading from './small/loading';
+import Header from '../ui/header';
+import EventBottom from "../ui/eventBottom";
+import EventTop from "../ui/eventTop";
+import AddEventButton from "../ui/buttons/addEvent";
+
+import Marker from '../small/marker';
+import Loading from '../small/loading';
 
 class Map extends Component {
   constructor(props) {
@@ -53,10 +54,10 @@ class Map extends Component {
       }
     }), () => { this.google.panTo(this.state.center); });
 
-    console.log("show Event Clicked!", this.state.center);
+    // console.log("show Event Clicked!", this.state.center);
   }
 
-  clickAdd_Event() {
+  clickAddEvent() {
     this.setState( prevState => ({
       showEvent: !prevState.showAddEvent
     }));
@@ -71,13 +72,13 @@ class Map extends Component {
 
     return (
       // Important! Always set the container height explicitly
-      <div style={{ height: '90vh', width: '100%' }} >
+      <div className="map-container" >
 
         <Loading show = { !this.state.loaded } />
         <Header show = {!this.state.showEvent}/>
 
-        <EventTop show = {this.state.showEvent} />
-        <Event    show = {this.state.showEvent} />
+        <EventTop     show = {this.state.showEvent} />
+        <EventBottom  show = {this.state.showEvent} />
 
         <GoogleMapReact
           bootstrapURLKeys  = {{ key: "AIzaSyD9L-pZrIUda4oTGDJ_RnbstCx0b8haZvA" }}
@@ -94,7 +95,7 @@ class Map extends Component {
           />
         </GoogleMapReact>
 
-        <AddEvent show = {this.state.showAddEvent}/>
+        <AddEventButton show = {this.state.showAddEvent}/>
 
       </div>
     );

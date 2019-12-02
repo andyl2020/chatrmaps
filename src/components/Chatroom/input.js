@@ -1,5 +1,4 @@
-import React from "react";
-import { Component } from "react";
+import React, { Component } from "react";
 
 class Input extends Component {
   constructor() {
@@ -29,7 +28,7 @@ class Input extends Component {
 
   render() {
     return (
-      <div className = "Input">
+      <div className = "chat__input">
         <form onSubmit = { e => this.onSubmit(e) }>
           <input
             onChange    = { e => this.onChange(e) }

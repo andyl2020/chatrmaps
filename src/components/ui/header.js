@@ -14,10 +14,11 @@ class Header extends Component {
       open: !prevState.open
     }));
   }
+
   render() {
     return (
       <AppBar position  = "static"
-              style     = {{ backgroundColor: "#262626" }} >
+              className = "header">
         <Toolbar>
           <Typography variant="h6">ChatrMaps</Typography>
         </Toolbar>
