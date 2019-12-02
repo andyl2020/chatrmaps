@@ -1,11 +1,11 @@
-.App {
+.chat {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
 }
 
-.App-header {
+.chat__header {
   background-color: #262626;
   overflow: visible;
   width: 100%;
@@ -128,6 +128,7 @@ button {
   transform: translateY(100%);
   transition: all 0.4s;
   color: white;
+  z-index: 1;
 }
 .event svg {
   padding: 10px;
@@ -145,6 +146,7 @@ button {
   transform: translateY(0%);
   transition: all 0.2s;
   color: white;
+  z-index: 1;
 }
 .event_active svg {
   padding: 10px;

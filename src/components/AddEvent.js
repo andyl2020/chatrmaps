@@ -1,19 +1,13 @@
-import { Component } from "react";
 import React from "react";
 
-class AddEvent extends Component {
-  state = {
-    text: ""
-  }
-
-  render() {
-    return (
-      <div className = "add-event"
-        style = {buttonStyle}>
-        <button type="button">Add Event</button>
-      </div>
-    );
-  }
+const AddEvent = () => {
+  return (
+    <div className  = "add-event"
+         style      = {buttonStyle}
+    >
+      <button type = "button">Add Event</button>
+    </div>
+  );
 }
 
 const buttonStyle = {

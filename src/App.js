@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from 'react-router-dom';
 import './styles/App.css';
 import { randomName, randomColor } from "./functions/demo";
 import Chat from './components/Chat';
 import Map from './components/Map';
-import ListOfUsers from './components/ListOfUsers';
 import UserList from './components/userList';
 
 class App extends Component {
@@ -43,26 +41,24 @@ class App extends Component {
       this.setState({ messages });
 
     });
+
     room.on('members', (members) => {
       const member_list = [];
-      for(var member in members){
-        if(member.clientData){
-            if (member.clientData.username){
-              member_list.push(member.clientData.username);
-            }
-        }
-      }
-      console.log(member_list);
-      this.setState({members: member_list});
-    });
-    room.on('member_join', (member) => {
-      const member_list = this.state.members;
-      if (member.clientData){
-        if (member.clientData.username){
+      for (const member in members) {
+        if (member.clientData && member.clientData.username) {
           member_list.push(member.clientData.username);
         }
       }
-      console.log(member_list);
+      console.log("New member! List:", member_list);
+      this.setState({members: member_list});
+    });
+
+    room.on('member_join', (member) => {
+      const member_list = this.state.members;
+      if (member.clientData && member.clientData.username) {
+        member_list.push(member.clientData.username);
+      }
+      console.log("New member! List:", member_list);
       this.setState({members: member_list});
     });
 
@@ -73,29 +69,30 @@ class App extends Component {
     return (
       <Router>
         <Switch>
+
           <Route exact path="/"
             render={() =>
               <Map messages={this.state.messages}
                    member={this.state.member}
-                   numMembers={this.state.members.length}/>
-            }
+                   numMembers={this.state.members.length}/> }
           >
           </Route>
+
           <Route exact path="/chat"
             render={() =>
               <Chat messages={this.state.messages}
                 member={this.state.member}
                 members={this.state.members}
-                onSendMessage={this.onSendMessage} />
-            }
+                onSendMessage={this.onSendMessage} /> }
           >
           </Route>
+
           <Route exact path="/users"
             render={() =>
-              <UserList members={this.state.members}/>
-            }
+              <UserList members={this.state.members}/> }
           >
           </Route>
+
         </Switch>
       </Router>
     );
@@ -106,6 +103,7 @@ class App extends Component {
       room: "observable-room",
       message
     });
+
     const ml = document.getElementById('messageList');
     ml.scrollTop = ml.scrollHeight;
   }
@@ -130,6 +128,5 @@ var firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
 
 export default App;

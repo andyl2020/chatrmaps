@@ -1,20 +1,29 @@
-import { Component } from "react";
 import React from "react";
+import { Component } from "react";
 
 class Input extends Component {
-  state = {
-    text: ""
+  constructor() {
+    super();
+    this.state = {
+      text: ""
+    }
   }
 
   onChange(e) {
+    e.preventDefault();
+
     this.setState({ text: e.target.value });
   }
 
   onSubmit(e) {
     e.preventDefault();
-    if(this.state.text) {
-      this.setState({ text: "" });
-      this.props.onSendMessage(this.state.text);
+
+    if (this.state.text) {
+      this.setState({
+        text: ""
+      }, () => {
+        this.props.onSendMessage(this.state.text);
+      });
     }
   }
 

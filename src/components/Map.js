@@ -12,15 +12,17 @@ class Map extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showEvent: false,
-      showAdd_Event: true,
+      showEvent:    false,
+      showAddEvent: true,
+
       center: {
         lat: 49.2666,
         lng: -123.2480
       },
-      zoom: 16,
+      zoom:   16,
       loaded: false
     };
+
     this.clickEvent = this.clickEvent.bind(this);
   }
 
@@ -41,25 +43,23 @@ class Map extends Component {
     );
   }
 
-
   clickEvent(latt, lngg) {
     this.setState( prevState => ({
       ...prevState,
-      showEvent: !this.state.showEvent,
+      showEvent: !prevState.showEvent,
       center: {
         lat: latt,
         lng: lngg
       }
-    }), () => {
-      this.google.panTo(this.state.center);
-    });
+    }), () => { this.google.panTo(this.state.center); });
+
     console.log("show Event Clicked!", this.state.center);
   }
 
   clickAdd_Event() {
-    this.setState({
-      showEvent: !this.state.showAdd_Event
-    });
+    this.setState( prevState => ({
+      showEvent: !prevState.showAddEvent
+    }));
   }
 
   render() {
@@ -72,26 +72,30 @@ class Map extends Component {
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: '90vh', width: '100%' }} >
+
         <Loading show = { !this.state.loaded } />
         <Header show = {!this.state.showEvent}/>
+
+        <EventTop show = {this.state.showEvent} />
+        <Event    show = {this.state.showEvent} />
+
         <GoogleMapReact
-          bootstrapURLKeys={{ key: "AIzaSyD9L-pZrIUda4oTGDJ_RnbstCx0b8haZvA" }}
-          defaultCenter={defaultCenter}
-          defaultZoom={defaultZoom}
+          bootstrapURLKeys  = {{ key: "AIzaSyD9L-pZrIUda4oTGDJ_RnbstCx0b8haZvA" }}
+          defaultCenter     = {defaultCenter}
+          defaultZoom       = {defaultZoom}
           yesIWantToUseGoogleMapApiInternals
-          onGoogleApiLoaded={({ map, maps }) => this.handleApiLoaded(map, maps)}
+          onGoogleApiLoaded = {({ map, maps }) => this.handleApiLoaded(map, maps)}
         >
           <Marker
-            lat={49.2666}
-            lng={-123.2480}
-            text="My Marker"
+            lat   = {49.2666}
+            lng   = {-123.2480}
+            num   = {this.props.numMembers}
             clickEvent = { this.clickEvent }
-            num = {this.props.numMembers}
           />
         </GoogleMapReact>
-        <EventTop show = {this.state.showEvent} />
-        <Event show = {this.state.showEvent} />
-        <AddEvent show = {this.state.showAdd_Event}/>
+
+        <AddEvent show = {this.state.showAddEvent}/>
+
       </div>
     );
   }

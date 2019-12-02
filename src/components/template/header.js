@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { AppBar, Toolbar, IconButton, Typography, Button, MenuItem } from '@material-ui/core';
-import { Menu, AccountCircle } from '@material-ui/icons';
-
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
 
 class Header extends Component {
   constructor() {
@@ -12,17 +10,16 @@ class Header extends Component {
   }
 
   handleClose() {
-    this.setState({
-      open: !this.state.open
-    });
+    this.setState( prevState => ({
+      open: !prevState.open
+    }));
   }
   render() {
-    return(
-      <AppBar position="static" style={{backgroundColor: "#262626"}} >
+    return (
+      <AppBar position  = "static"
+              style     = {{ backgroundColor: "#262626" }} >
         <Toolbar>
-          <Typography variant="h6">
-            ChatrMaps
-          </Typography>
+          <Typography variant="h6">ChatrMaps</Typography>
         </Toolbar>
       </AppBar>
     );

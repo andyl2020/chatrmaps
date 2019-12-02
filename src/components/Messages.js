@@ -1,52 +1,47 @@
 import { Component } from "react";
 import React from "react";
-import {randomColor,randomName} from "../functions/demo";
+import { randomColor, randomName } from "../functions/demo";
+
 class Messages extends Component {
-  render() {
-    const { messages } = this.props;
-    return (
-      <ul className="Messages-list" id="messageList">
-        { messages.map((m, i) => this.renderMessage(m, i)) }
-      </ul>
-    );
-  }
+
   generateKey(pre) {
     return new Date().getTime();
   }
+
   renderMessage(message, index) {
     const { member, text } = message;
     const { currentMember } = this.props;
+
     var messageFromMe;
     var username;
-    if(member!=null&&currentMember!=null)
-    {
+
+    if (member !== null && currentMember !== null) {
       messageFromMe = member.id === currentMember.id;
-    }
-    else{
+    } else {
       messageFromMe = false;
     }
 
-    if(member==null){
+    if (member === null) {
       username = randomName();
-    }
-    else{
-      if(member.clientData!=null)
+    } else {
+      if (member.clientData !== null) {
         username = member.clientData.username;
-       else
+      } else {
         username = randomName();
+      }
     }
 
     const className = messageFromMe ?
       "Messages-message currentMember" : "Messages-message";
-    if(member){
-      if (member.clientData){
-        if(member.clientData.color){
-          var bgc = member.clientData.color;
+
+    if (member) {
+      if (member.clientData) {
+        if (member.clientData.color) {
+          const bgc = member.clientData.color;
         }
       }
-    }
-    else{
-      bgc = randomColor();
+    } else {
+      const bgc = randomColor();
     }
 
 
@@ -54,7 +49,7 @@ class Messages extends Component {
       <li key       = { index }
           className = { className }>
         <span className = "avatar"
-              style     = {{ backgroundColor: bgc }}
+              style     = {{ backgroundColor: this.bgc }}
         />
         <div className = "Message-content">
           <div className = "username">{ username }</div>
