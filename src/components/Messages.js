@@ -1,5 +1,4 @@
-import { Component } from "react";
-import React from "react";
+import React, { Component } from "react";
 import { randomColor, randomName } from "../functions/demo";
 
 class Messages extends Component {
@@ -44,7 +43,6 @@ class Messages extends Component {
       const bgc = randomColor();
     }
 
-
     return (
       <li key       = { index }
           className = { className }>
@@ -56,6 +54,15 @@ class Messages extends Component {
           <div className = "text">{ text }</div>
         </div>
       </li>
+    );
+  }
+
+  render() {
+    const { messages } = this.props;
+    return(
+      <ul className="messages-list" id="messageList">
+        { messages.map((m,i) => this.renderMessage(m,i))}
+      </ul>
     );
   }
 }

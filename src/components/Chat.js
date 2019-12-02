@@ -31,9 +31,9 @@ class Chat extends Component {
             >Home</Link>
 
             &nbsp; &nbsp; | &nbsp; &nbsp;
-            <span class   = "trigger"
-                  onClick = {this.triggerMembers}
-                  style   = {linkStyle}
+            <span className = "trigger"
+                  onClick   = {this.triggerMembers}
+                  style     = {linkStyle}
             >Users</span>
           </p>
 

@@ -4,27 +4,50 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
+
 import './styles/App.css';
 import { randomName, randomColor } from "./functions/demo";
+
 import Chat from './components/Chat';
 import Map from './components/Map';
 import UserList from './components/userList';
 
+
+// Firebase App (the core Firebase SDK) is always required and
+// must be listed before other Firebase SDKs
+const firebase = require("firebase/app");
+
+const firebaseConfig = {
+  apiKey:             "api-key",
+  authDomain:         "project-id.firebaseapp.com",
+  databaseURL:        "https://project-id.firebaseio.com",
+  projectId:          "project-id",
+  storageBucket:      "project-id.appspot.com",
+  messagingSenderId:  "sender-id",
+  appId:              "app-id",
+  measurementId:      "G-measurement-id",
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
 class App extends Component {
-  state = {
-    messages: [],
-    member: {
-      username: randomName(),
-      color: randomColor(),
-    },
-    members: []
-  }
 
   constructor() {
     super();
+    this.state = {
+      messages: [],
+      member: {
+        username: randomName(),
+        color: randomColor(),
+      },
+      members: []
+    }
+
     this.drone = new window.Scaledrone("448LX1LCXbsGUhUI", {
       data: this.state.member
     });
+
     this.drone.on('open', error => {
       if (error) {
         return console.error(error);
@@ -61,8 +84,6 @@ class App extends Component {
       console.log("New member! List:", member_list);
       this.setState({members: member_list});
     });
-
-
   }
 
   render() {
@@ -71,25 +92,25 @@ class App extends Component {
         <Switch>
 
           <Route exact path="/"
-            render={() =>
-              <Map messages={this.state.messages}
-                   member={this.state.member}
-                   numMembers={this.state.members.length}/> }
+            render = {() =>
+              <Map messages   = {this.state.messages}
+                   member     = {this.state.member}
+                   numMembers = {this.state.members.length}/> }
           >
           </Route>
 
           <Route exact path="/chat"
-            render={() =>
-              <Chat messages={this.state.messages}
-                member={this.state.member}
-                members={this.state.members}
-                onSendMessage={this.onSendMessage} /> }
+            render = {() =>
+              <Chat messages      = {this.state.messages}
+                    member        = {this.state.member}
+                    members       = {this.state.members}
+                    onSendMessage = {this.onSendMessage} /> }
           >
           </Route>
 
           <Route exact path="/users"
-            render={() =>
-              <UserList members={this.state.members}/> }
+            render = {() =>
+              <UserList members = {this.state.members}/> }
           >
           </Route>
 
@@ -109,24 +130,5 @@ class App extends Component {
   }
 
 }
-
-
-// Firebase App (the core Firebase SDK) is always required and
-// must be listed before other Firebase SDKs
-var firebase = require("firebase/app");
-
-var firebaseConfig = {
-  apiKey: "api-key",
-  authDomain: "project-id.firebaseapp.com",
-  databaseURL: "https://project-id.firebaseio.com",
-  projectId: "project-id",
-  storageBucket: "project-id.appspot.com",
-  messagingSenderId: "sender-id",
-  appId: "app-id",
-  measurementId: "G-measurement-id",
-};
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
 
 export default App;
