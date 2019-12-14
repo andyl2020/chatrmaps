@@ -1,0 +1,55 @@
+.map-container {
+  height: 90vh;
+  width: 100vw;
+}
+
+.marker {
+  height: 50px;
+  width: 60px;
+  float: right;
+
+  .marker__icon {
+    top: 10px;
+    font-size: 60px !important;
+    position: absolute;
+  }
+  .marker__text {
+    top: 0;
+    right: 0;
+    position: absolute;
+    font-size: 20px;
+  }
+}
+
+.event_bar {
+  position: absolute;
+  width: 100%;
+  background-color: $grey;
+  text-align: center;
+  transition: all 0.4s;
+  color: $white;
+
+  svg {
+    padding: 10px;
+    fill: $white;
+    font-size: 50px !important;
+  }
+}
+
+.event_bar--bottom {
+  bottom: 0;
+  min-height: 15vh;
+  transform: translateY(100%);
+  z-index: 1;
+}
+
+.event_bar--top {
+  min-height: 10vh;
+  top: 0;
+  transform: translateY(-100%);
+  z-index: 1101;
+}
+
+.event_bar--active {
+  transform: translateY(0%);
+}

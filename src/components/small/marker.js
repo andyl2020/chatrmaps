@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Room } from '@material-ui/icons';
 
-class Marker extends Component {
-  render() {
-    var icon = <Room className = "marker"/>;
-    return(
-      <div  className="markerHolder"
-            onClick = {() => {this.props.clickEvent(this.props.lat, this.props.lng); }} >
-        <div className = "markerText">{this.props.num}</div>
-        {icon}
-      </div>
-    );
-  }
+const Marker = (props) => {
+  return (
+    <div  className = "marker"
+          onClick   = {() => {
+            props.clickEvent(props.lat, props.lng)
+          }} >
+
+      <div className = "marker__text">{props.num}</div>
+      <Room className = "marker__icon"/>
+
+    </div>
+  );
 }
 
 export default Marker;

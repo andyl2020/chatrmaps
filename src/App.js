@@ -2,31 +2,53 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from 'react-router-dom';
-import './styles/App.css';
+
+import './styles/App.scss';
 import { randomName, randomColor } from "./functions/demo";
-import Chat from './components/Chat';
+
+import Chat from './components/Chatroom';
 import Map from './components/Map';
-import ListOfUsers from './components/ListOfUsers';
-import UserList from './components/userList';
+
+import * as ROUTES from './constants/routes';
+
+
+// Firebase App (the core Firebase SDK) is always required and
+// must be listed before other Firebase SDKs
+const firebase = require("firebase/app");
+
+const firebaseConfig = {
+  apiKey:             "api-key",
+  authDomain:         "project-id.firebaseapp.com",
+  databaseURL:        "https://project-id.firebaseio.com",
+  projectId:          "project-id",
+  storageBucket:      "project-id.appspot.com",
+  messagingSenderId:  "sender-id",
+  appId:              "app-id",
+  measurementId:      "G-measurement-id",
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
 class App extends Component {
-  state = {
-    messages: [],
-    member: {
-      username: randomName(),
-      color: randomColor(),
-    },
-    members: []
-  }
 
   constructor() {
     super();
+    this.state = {
+      messages: [],
+      member: {
+        username: randomName(),
+        color: randomColor(),
+      },
+      members: []
+    }
+
     this.drone = new window.Scaledrone("448LX1LCXbsGUhUI", {
       data: this.state.member
     });
+
     this.drone.on('open', error => {
       if (error) {
         return console.error(error);
@@ -43,59 +65,50 @@ class App extends Component {
       this.setState({ messages });
 
     });
+
     room.on('members', (members) => {
       const member_list = [];
-      for(var member in members){
-        if(member.clientData){
-            if (member.clientData.username){
-              member_list.push(member.clientData.username);
-            }
-        }
-      }
-      console.log(member_list);
-      this.setState({members: member_list});
-    });
-    room.on('member_join', (member) => {
-      const member_list = this.state.members;
-      if (member.clientData){
-        if (member.clientData.username){
+      for (const member in members) {
+        if (member.clientData && member.clientData.username) {
           member_list.push(member.clientData.username);
         }
       }
-      console.log(member_list);
+      // console.log("New member! List:", member_list);
       this.setState({members: member_list});
     });
 
-
+    room.on('member_join', (member) => {
+      const member_list = this.state.members;
+      if (member.clientData && member.clientData.username) {
+        member_list.push(member.clientData.username);
+      }
+      // console.log("New member! List:", member_list);
+      this.setState({members: member_list});
+    });
   }
 
   render() {
     return (
       <Router>
         <Switch>
-          <Route exact path="/"
-            render={() =>
-              <Map messages={this.state.messages}
-                   member={this.state.member}
-                   numMembers={this.state.members.length}/>
-            }
+
+          <Route exact path={ROUTES.HOME}
+            render = {() =>
+              <Map messages   = {this.state.messages}
+                   member     = {this.state.member}
+                   numMembers = {this.state.members.length}/> }
           >
           </Route>
-          <Route exact path="/chat"
-            render={() =>
-              <Chat messages={this.state.messages}
-                member={this.state.member}
-                members={this.state.members}
-                onSendMessage={this.onSendMessage} />
-            }
+
+          <Route exact path={ROUTES.CHAT}
+            render = {() =>
+              <Chat messages      = {this.state.messages}
+                    member        = {this.state.member}
+                    members       = {this.state.members}
+                    onSendMessage = {this.onSendMessage} /> }
           >
           </Route>
-          <Route exact path="/users"
-            render={() =>
-              <UserList members={this.state.members}/>
-            }
-          >
-          </Route>
+
         </Switch>
       </Router>
     );
@@ -106,30 +119,11 @@ class App extends Component {
       room: "observable-room",
       message
     });
+
     const ml = document.getElementById('messageList');
     ml.scrollTop = ml.scrollHeight;
   }
 
 }
-
-
-// Firebase App (the core Firebase SDK) is always required and
-// must be listed before other Firebase SDKs
-var firebase = require("firebase/app");
-
-var firebaseConfig = {
-  apiKey: "api-key",
-  authDomain: "project-id.firebaseapp.com",
-  databaseURL: "https://project-id.firebaseio.com",
-  projectId: "project-id",
-  storageBucket: "project-id.appspot.com",
-  messagingSenderId: "sender-id",
-  appId: "app-id",
-  measurementId: "G-measurement-id",
-};
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
 
 export default App;
